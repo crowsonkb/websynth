@@ -3,10 +3,33 @@
 <head>
     <meta charset="utf-8">
     <title>Csound virtual instrument</title>
+    <link rel="stylesheet" href="normalize.css/normalize.css">
+    <link rel="stylesheet" href="main.css">
     <script src="csound.js"></script>
+    <script>
+        function moduleDidLoad() {
+            csound.Play();
+            csound.CompileOrc(
+                "gihrm ftgen 0, 0, 16384, 10, 1\n" +
+
+                "instr 1\n" +
+                "kenv mxadsr 0.01, 0.2, 0.5, 1.5, 0, 3\n" +
+                "asig gbuzz kenv*p5/8, cpsmidinn(p4), 8, 1, 0.75*p5^sqrt(2), gihrm\n" +
+                "     outs asig, asig\n" +
+                "endin\n"
+            );
+        };
+
+        function handleMessage(message) {
+            document.getElementById("console").innerText += message.data;
+        }
+    </script>
 </head>
 <body>
+    <h1>Csound virtual instrument</h1>
+    Console:
     <div id="console"></div>
+
     <div id="engine"></div>
 </body>
 </html>
