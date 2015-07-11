@@ -15,6 +15,22 @@ body {
     width: 400px;
 }
 
+.keys {
+    border-spacing: 8px;
+}
+
+.key {
+    background-color: #eee;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: table-cell;  /* This makes vertical-align work. */
+    height: 50px;
+    padding: 8px;
+    text-align: center;
+    width: 50px;
+    vertical-align: middle;
+}
+
 #engine {
     visibility: collapse;
 }

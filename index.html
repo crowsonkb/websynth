@@ -29,7 +29,13 @@
     <h1>Csound virtual instrument</h1>
     Console:
     <div id="console"></div>
-
+    <br>
+    <div class="keys">
+        <div class="key" onmousedown="csound.Event('i 1.60 0 -1 60 0.75')" onmouseup="csound.Event('i -1.60 0 0')">C4</div>
+        <div class="key" onmousedown="csound.Event('i 1.64 0 -1 64 0.75')" onmouseup="csound.Event('i -1.64 0 0')">E4</div>
+        <div class="key" onmousedown="csound.Event('i 1.67 0 -1 67 0.75')" onmouseup="csound.Event('i -1.67 0 0')">G4</div>
+        <div class="key" onmousedown="csound.Event('i 1.72 0 -1 72 0.75')" onmouseup="csound.Event('i -1.72 0 0')">C5</div>
+    </div>
     <div id="engine"></div>
 </body>
 </html>
