@@ -2,7 +2,7 @@
   "program": {
     "portable": {
       "pnacl-translate": {
-        "url": "csound.pexe"
+        "url": "https://s3-us-west-2.amazonaws.com/crowsonkb-csound-pnacl/csound.pexe"
       }
     }
   }
