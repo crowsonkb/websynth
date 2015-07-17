@@ -23,6 +23,14 @@
         function handleMessage(message) {
             document.getElementById("console").innerText += message.data;
         }
+
+        function keydn(note) {
+            csound.Event("i 1."+note+" 0 -1 "+note+" 0.75");
+        }
+
+        function keyup(note) {
+            csound.Event("i -1."+note+" 0 0");
+        }
     </script>
 </head>
 <body>
@@ -30,11 +38,11 @@
     Console:
     <div id="console"></div>
     <br>
-    <div class="keys">
-        <div class="key" onmousedown="csound.Event('i 1.60 0 -1 60 0.75')" onmouseup="csound.Event('i -1.60 0 0')">C4</div>
-        <div class="key" onmousedown="csound.Event('i 1.64 0 -1 64 0.75')" onmouseup="csound.Event('i -1.64 0 0')">E4</div>
-        <div class="key" onmousedown="csound.Event('i 1.67 0 -1 67 0.75')" onmouseup="csound.Event('i -1.67 0 0')">G4</div>
-        <div class="key" onmousedown="csound.Event('i 1.72 0 -1 72 0.75')" onmouseup="csound.Event('i -1.72 0 0')">C5</div>
+    <div class="keys" onselectstart="return false">
+        <div class="key" onmousedown="keydn(60)" onmouseup="keyup(60)">C4</div>
+        <div class="key" onmousedown="keydn(64)" onmouseup="keyup(64)">E4</div>
+        <div class="key" onmousedown="keydn(67)" onmouseup="keyup(67)">G4</div>
+        <div class="key" onmousedown="keydn(72)" onmouseup="keyup(72)">C5</div>
     </div>
     <div id="engine"></div>
 </body>
