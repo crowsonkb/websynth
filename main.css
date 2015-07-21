@@ -24,10 +24,10 @@ body {
     border: 1px solid black;
     border-radius: 4px;
     display: table-cell;  /* This makes vertical-align work. */
-    height: 50px;
+    height: 40px;
     padding: 8px;
     text-align: center;
-    width: 50px;
+    width: 40px;
     vertical-align: middle;
 }
 
