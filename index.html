@@ -5,6 +5,8 @@
     <title>Csound virtual instrument</title>
     <link rel="stylesheet" href="normalize.css/normalize.css">
     <link rel="stylesheet" href="main.css">
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="jquery.color-2.1.2.min.js"></script>
     <script src="csound.js"></script>
     <script>
         function moduleDidLoad() {
@@ -24,13 +26,24 @@
             document.getElementById("console").innerText += message.data;
         }
 
-        function keydn(note) {
+        function note_start(note) {
             csound.Event("i 1."+note+" 0 -1 "+note+" 0.75");
         }
 
-        function keyup(note) {
+        function note_end(note) {
             csound.Event("i -1."+note+" 0 0");
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.key').mousedown(function() {
+                note_start($(this).data('note'));
+                $(this).animate({backgroundColor: "#888"}, 75);
+            }).mouseup(function() {
+                note_end($(this).data('note'));
+                $(this).animate({backgroundColor: "#eee"}, 1500);
+            });
+        });
     </script>
 </head>
 <body>
@@ -41,14 +54,14 @@
     <div id="console"></div>
     <br>
     <div class="keys" onselectstart="return false">
-        <div class="key" onmousedown="keydn(60)" onmouseup="keyup(60)">C4</div>
-        <div class="key" onmousedown="keydn(62)" onmouseup="keyup(62)">D4</div>
-        <div class="key" onmousedown="keydn(64)" onmouseup="keyup(64)">E4</div>
-        <div class="key" onmousedown="keydn(65)" onmouseup="keyup(65)">F4</div>
-        <div class="key" onmousedown="keydn(67)" onmouseup="keyup(67)">G4</div>
-        <div class="key" onmousedown="keydn(69)" onmouseup="keyup(69)">A4</div>
-        <div class="key" onmousedown="keydn(71)" onmouseup="keyup(71)">B4</div>
-        <div class="key" onmousedown="keydn(72)" onmouseup="keyup(72)">C5</div>
+        <div class="key" data-note="60">C4</div>
+        <div class="key" data-note="62">D4</div>
+        <div class="key" data-note="64">E4</div>
+        <div class="key" data-note="65">F4</div>
+        <div class="key" data-note="67">G4</div>
+        <div class="key" data-note="69">A4</div>
+        <div class="key" data-note="71">B4</div>
+        <div class="key" data-note="72">C5</div>
     </div>
     <div id="engine"></div>
 </body>
